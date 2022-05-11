@@ -26,6 +26,26 @@ export default function ViewTickets() {
         setDate(d);
         let bookings = await fetch(`/booking/${d}/all`);
         let result = await bookings.json();
+        result.forEach((booking) => {
+            // Sorting to minimize wait time, seats inside a booking
+            booking.seats.sort((a, b) => {
+                if(a.seatNo < b.seatNo) return 1;
+                if(a.seatNo > b.seatNo) return -1;
+                if(a.seatNo === b.seatNo) return 0;
+            });
+        });
+        // Sorting to minimize wait time, all the bookings
+        result.sort((a, b) => {
+            let aSeatNosSum = a.seats.reduce((prev, next) => {
+                return prev + next.seatNo;
+            }, 0);
+            let bSeatNosSum = b.seats.reduce((prev, next) => {
+                return prev + next.seatNo;
+            }, 0);
+            if(aSeatNosSum < bSeatNosSum) return 1;
+            if(aSeatNosSum > bSeatNosSum) return -1;
+            if(aSeatNosSum === bSeatNosSum) return 0;
+        });
         setBookings(result);
     }
 
