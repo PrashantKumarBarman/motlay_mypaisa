@@ -1,4 +1,4 @@
-## Application written using ReactJS, NodeJS, Mysql
+## Application written using ReactJS, NodeJS, ExpressJS, Mysql
 
 - backend folder contains backend NodeJS server
 - cd into backend folder
