@@ -120,11 +120,11 @@ export default function ViewTickets() {
                                         </FormControl>
                                     ): null}
                                     {booking.status === 'arrived' ? (
-                                        <Button variant='contained' color='success' disabled>Arrived</Button>
+                                        <Button variant='contained' color='success' style={{ backgroundColor: '#4caf50' }} disabled>Arrived</Button>
                                     ) : null}
 
                                     {booking.status === 'cancelled' ? (
-                                        <Button variant='contained' color='error' disabled>Cancelled</Button>
+                                        <Button variant='contained' color='error' style={{ backgroundColor: '#ff9800' }} disabled>Cancelled</Button>
                                     ) : null}
                                 </TableCell>
                             </TableRow>
